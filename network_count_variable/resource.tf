@@ -14,19 +14,8 @@ resource "aws_subnet" "subnets_for_My_learnings" {
     cidr_block = var.subnet_cidr_block[count.index]
 
     tags = {
-      Name = var.subnet_tags[count.index]
+      Name = length(var.subnet_tags)
     }
     
 }
 
-
-resource "aws_subnet" "subnets_for_My_learnings" {
-    count = length(var.subnet_cidr_block) 
-    vpc_id = aws_vpc.My_learnings.id
-    cidr_block = var.subnet_cidr_block[count.index]
-
-    tags = {
-      Name = var.subnet_tags[count.index]
-    }
-
-}
